@@ -1,0 +1,9 @@
+{
+  "name": "goffup-oxapay-webhook",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "mongodb": "^7.1.1"
+  }
+}
+

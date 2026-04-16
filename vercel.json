@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/webhooks/oxapay", "destination": "/api/webhooks/oxapay" }
+  ]
+}
+
