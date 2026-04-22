@@ -326,8 +326,15 @@ export default async function handler(req, res) {
       }
 
       if (guildId && userId && roleId) {
-        await discordAddRole({ token: botToken, guildId, userId, roleId });
-        await upsertPremiumMemberRoleSnapshot({ guildId, userId, roleId }).catch(() => null);
+        try {
+          await discordAddRole({ token: botToken, guildId, userId, roleId });
+          await upsertPremiumMemberRoleSnapshot({ guildId, userId, roleId }).catch(() => null);
+        } catch (e) {
+          console.error(
+            `[oxapay] role grant failed guild=${guildId} user=${userId} role=${roleId}:`,
+            e?.message || e
+          );
+        }
       }
 
       if (guildId && userId && categoryId) {
